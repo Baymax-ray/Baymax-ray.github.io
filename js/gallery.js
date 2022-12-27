@@ -24,6 +24,7 @@ function upDate(previewPic){
     */
     var back =document.getElementById('image');
     back.style.backgroundImage = "url('')";
-    back.innerHTML="Hover over an image below to display here."
+    back.innerHTML="Will be there soon!<br>
+		You can play around with these dogs."
     back.style.backgroundColor= "#8e68ff";
 	}
