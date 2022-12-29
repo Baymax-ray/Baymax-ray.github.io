@@ -349,7 +349,7 @@ main {
   background: var(--onyx);
   font-size: var(--fs-8);
   font-weight: var(--fw-300);
-  width: 100%;
+  width: 80%;
   padding: 3px 12px;
   border-radius: 8px;
   word-wrap:break-word; 
