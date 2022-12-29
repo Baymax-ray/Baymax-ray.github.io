@@ -14,5 +14,5 @@ Please feel free to fire issues or make pull requests if you want to improve the
 4. Open the index.html to customize content. 
 5. Upload needed images, pdf, or other files to the folder called assets.
 6. Create an account in [elasticemail](https://elasticemail.com/) and connect to SMTP API.
-7. Change 'Username', 'Password', 'To', and 'From' in js/functions.js.
+7. Change 'Username', 'Password', 'To', and 'From' in js/functions.js function sendEmail().
 8. Check status by going to the repository settings, in the "GitHub pages" section
