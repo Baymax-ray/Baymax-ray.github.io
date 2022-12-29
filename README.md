@@ -4,6 +4,8 @@ A Github Pages template for personal pages. Inspired by [Sadee](https://github.c
 
 I made some modification to the template. Now, you can receive email from the contact form.
 
+Please feel free to fire issues or make pull requests if you want to improve the generic template / theme.
+
 # Instructions
 
 1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
