@@ -1,3 +1,3 @@
 # Baymax-ray.github.io
 
-Will be there soon!
+A Github Pages template for personal pages. Inspired by [Sadee](https://github.com/codewithsadee) from [vCard](https://github.com/codewithsadee/vcard-personal-portfolio)
