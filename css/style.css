@@ -349,9 +349,11 @@ main {
   background: var(--onyx);
   font-size: var(--fs-8);
   font-weight: var(--fw-300);
-  width: 98%;
+  width: 100%;
   padding: 3px 12px;
   border-radius: 8px;
+  word-wrap:break-word; 
+  word-break:break-all; 
 }
 
 .info_more-btn {
