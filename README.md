@@ -2,7 +2,7 @@
 
 A Github Pages template for personal pages. Inspired by [Sadee](https://github.com/codewithsadee) from [vCard](https://github.com/codewithsadee/vcard-personal-portfolio). vCard is a fully responsive personal portfolio website, responsive for all devices.
 
-I made some modification to the template. Now, you can receive email from the contact form.
+I made some modifications to the template. Now, you can receive email from the contact form.
 
 Please feel free to fire issues or make pull requests if you want to improve the generic template / theme.
 
@@ -13,6 +13,6 @@ Please feel free to fire issues or make pull requests if you want to improve the
 3. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
 4. Open the index.html to customize content. 
 5. Upload needed images, pdf, or other files to the folder called assets.
-6. Create an account in [elasticemail](https://elasticemail.com/) and connect to SMTP API.
+6. Create an account in [elasticemail](https://elasticemail.com/) and connect to SMTP API. However, it seems hard for people to use SMTP API for this purpose now, and I have to temporarily remove the contact form.
 7. Change 'Username', 'Password', 'To', and 'From' in js/functions.js function sendEmail().
 8. Check status by going to the repository settings, in the "GitHub pages" section
