@@ -1073,9 +1073,9 @@ main {
 }
 
 .blog-banner-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* ensures the entire image is displayed */
+  width: 100%; /* adjusts to fit the container */
+  height: 100%; 
   transition: var(--transition-1);
 }
 
