@@ -1,18 +1,71 @@
-# Baymax-ray.github.io
+﻿# Baymax-ray.github.io
 
-A Github Pages template for personal pages. Inspired by [Sadee](https://github.com/codewithsadee) from [vCard](https://github.com/codewithsadee/vcard-personal-portfolio). vCard is a fully responsive personal portfolio website, responsive for all devices.
+Personal academic homepage hosted on GitHub Pages. The site is a customized single-page portfolio based on the [vCard template](https://github.com/codewithsadee/vcard-personal-portfolio), with content for `About`, `Resume`, `Publications`, and `Blog`.
 
-I made some modifications to the template. Now, you can receive email from the contact form.
+## Current structure
 
-Please feel free to fire issues or make pull requests if you want to improve the generic template / theme.
+- `index.html`: main page structure and content sections
+- `css/style.css`: site styles
+- `js/script.js`: sidebar and tab navigation behavior
+- `js/bibtex-parser.js`: local BibTeX parser for publications
+- `js/publications.js`: loads and renders the publications list
+- `assets/data/publications.bib`: publication data source
 
-# Instructions
+## Publications workflow
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-2. Fork this repository
-3. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-4. Open the index.html to customize content. 
-5. Upload needed images, pdf, or other files to the folder called assets.
-6. Create an account in [elasticemail](https://elasticemail.com/) and connect to SMTP API. However, it seems hard for people to use SMTP API for this purpose now, and I have to temporarily remove the contact form.
-7. Change 'Username', 'Password', 'To', and 'From' in js/functions.js function sendEmail().
-8. Check status by going to the repository settings, in the "GitHub pages" section
+The `Publications` tab reads from:
+
+`assets/data/publications.bib`
+
+Recommended workflow:
+
+1. Export a BibTeX file from Zotero.
+2. Replace `assets/data/publications.bib` with the exported file.
+3. Commit and push to GitHub Pages, or preview through a local HTTP server.
+
+The page automatically splits entries into:
+
+- `Published`
+- `Preprints`
+
+Optional manual override in BibTeX:
+
+```bibtex
+keywords = {published}
+keywords = {preprint}
+```
+
+## Local preview
+
+Do not preview by double-clicking `index.html` with a `file://` URL. Browsers usually block `fetch()` from loading the local `.bib` file in that mode, so the `Publications` section will appear empty.
+
+Use a local server instead. Either of these works:
+
+```powershell
+python -m http.server 8000
+```
+
+or
+
+```powershell
+npx serve .
+```
+
+Then open:
+
+`http://localhost:8000`
+
+## Deployment
+
+This repository is intended for GitHub Pages deployment.
+
+1. Push changes to the repository.
+2. In GitHub repository settings, enable GitHub Pages for the target branch.
+3. Wait for the Pages build to finish.
+4. Open the published site URL and verify the `Publications` tab.
+
+## Notes
+
+- `Resume` currently links directly to a PDF in `assets/`.
+- The old contact form flow is not part of the active site workflow.
+- If publications do not update, first confirm that `assets/data/publications.bib` changed and that the site is being served over `http` or `https`.

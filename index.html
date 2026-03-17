@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -180,7 +180,7 @@
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button class="navbar-link  active" data-nav-link="about">About</button>
           </li>
 
           <li class="navbar-item">
@@ -195,7 +195,11 @@
           -->
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
+            <button class="navbar-link" data-nav-link="publications">Publications</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link="blog">Blog</button>
           </li>
 
           <!-- I cannot find a server now, so I remove the contact part for now
@@ -431,7 +435,7 @@
 
               <h4 class="h4 timeline-item-title">University school of the arts</h4>
 
-              <span>2007 — 2008</span>
+              <span>2007 鈥?2008</span>
 
               <p class="timeline-text">
                 Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
@@ -445,7 +449,7 @@
 
               <h4 class="h4 timeline-item-title">New york academy of art</h4>
 
-              <span>2006 — 2007</span>
+              <span>2006 鈥?2007</span>
 
               <p class="timeline-text">
                 Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda est
@@ -458,7 +462,7 @@
 
               <h4 class="h4 timeline-item-title">High school of art and design</h4>
 
-              <span>2002 — 2004</span>
+              <span>2002 鈥?2004</span>
 
               <p class="timeline-text">
                 Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur
@@ -488,7 +492,7 @@
 
               <h4 class="h4 timeline-item-title">Creative director</h4>
 
-              <span>2015 — Present</span>
+              <span>2015 鈥?Present</span>
 
               <p class="timeline-text">
                 Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas
@@ -502,7 +506,7 @@
 
               <h4 class="h4 timeline-item-title">Art director</h4>
 
-              <span>2013 — 2015</span>
+              <span>2013 鈥?2015</span>
 
               <p class="timeline-text">
                 Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
@@ -516,7 +520,7 @@
 
               <h4 class="h4 timeline-item-title">Web designer</h4>
 
-              <span>2010 — 2013</span>
+              <span>2010 鈥?2013</span>
 
               <p class="timeline-text">
                 Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
@@ -778,6 +782,46 @@
 
       </article>
       -->
+      <!--
+        - #PUBLICATIONS
+      -->
+
+      <article class="publications" data-page="publications">
+
+        <header>
+          <h2 class="h2 article-title">Publications</h2>
+        </header>
+
+        <section class="publications-intro">
+          <p>
+            This list is loaded from
+            <code>assets/data/publications.bib</code>
+            so I can update it directly from a Zotero export.
+          </p>
+        </section>
+
+        <section class="publication-status" data-publications-status>
+          Loading publications...
+        </section>
+
+        <section class="publication-group">
+          <div class="publication-group-header">
+            <h3 class="h3 publication-group-title">Published</h3>
+          </div>
+
+          <ul class="publication-list" data-publications-group="published"></ul>
+        </section>
+
+        <section class="publication-group">
+          <div class="publication-group-header">
+            <h3 class="h3 publication-group-title">Preprints</h3>
+          </div>
+
+          <ul class="publication-list" data-publications-group="preprint"></ul>
+        </section>
+
+      </article>
+
 
 
 
@@ -940,6 +984,8 @@
   <!--
     - custom js link
   -->
+  <script src="js/bibtex-parser.js"></script>
+  <script src="js/publications.js"></script>
   <script src="js/script.js"></script>
 
   <!--
@@ -955,3 +1001,7 @@
 </body>
 
 </html>
+
+
+
+
