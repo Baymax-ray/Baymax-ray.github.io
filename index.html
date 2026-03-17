@@ -12,6 +12,29 @@
   -->
   <link rel="shortcut icon" href="./assets/images/baymax.ico" type="image/x-icon">
 
+  <script>
+    (function () {
+      const storageKey = "theme-preference";
+      let theme = "dark";
+
+      try {
+        const storedTheme = localStorage.getItem(storageKey);
+        if (storedTheme === "light" || storedTheme === "dark") {
+          theme = storedTheme;
+        } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      } catch (error) {
+        theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+    })();
+  </script>
+
   <!--
     - custom css link
   -->
@@ -200,6 +223,13 @@
 
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link="blog">Blog</button>
+          </li>
+
+          <li class="navbar-item navbar-item--theme">
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" title="Switch theme">
+              <ion-icon name="sunny-outline" data-theme-toggle-icon></ion-icon>
+              <span data-theme-toggle-label>Light</span>
+            </button>
           </li>
 
           <!-- I cannot find a server now, so I remove the contact part for now

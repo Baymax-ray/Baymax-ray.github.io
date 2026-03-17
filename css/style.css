@@ -16,6 +16,7 @@
 \*-----------------------------------*/
 
 :root {
+  color-scheme: dark;
 
   /**
    * colors
@@ -68,6 +69,22 @@
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
+  --page-background: var(--smoky-black);
+  --navbar-background: hsla(240, 1%, 17%, 0.75);
+  --plain-link-color: hsl(190, 100%, 72%);
+  --plain-link-hover-color: var(--orange-yellow-crayola);
+  --accent-contrast: hsl(0, 0%, 7%);
+  --theme-toggle-background: var(--onyx);
+  --theme-toggle-border: var(--jet);
+  --theme-toggle-color: var(--light-gray);
+  --theme-toggle-hover-background: var(--orange-yellow-crayola);
+  --theme-toggle-hover-color: var(--accent-contrast);
+  --scrollbar-thumb: hsla(0, 0%, 100%, 0.1);
+  --scrollbar-thumb-hover: hsla(0, 0%, 100%, 0.15);
+  --scrollbar-thumb-border: var(--smoky-black);
+  --scrollbar-thumb-shadow-1: hsla(0, 0%, 100%, 0.11);
+  --scrollbar-thumb-shadow-2: hsla(0, 0%, 100%, 0.11);
+  --map-filter: grayscale(1) invert(1);
 
   /**
    * typography
@@ -111,6 +128,62 @@
 
 }
 
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-gradient-onyx: linear-gradient(
+    to bottom right,
+    hsl(0, 0%, 100%) 0%,
+    hsl(210, 30%, 95%) 100%
+  );
+  --bg-gradient-jet: linear-gradient(
+    to bottom right,
+    hsla(210, 28%, 86%, 0.35) 0%,
+    hsla(210, 28%, 86%, 0) 100%
+  ), hsl(0, 0%, 100%);
+  --bg-gradient-yellow-2: linear-gradient(
+    135deg,
+    hsla(45, 100%, 71%, 0.25) 0%,
+    hsla(35, 100%, 68%, 0) 59.86%
+  ), hsl(0, 0%, 100%);
+  --border-gradient-onyx: linear-gradient(
+    to bottom right,
+    hsl(214, 22%, 84%) 0%,
+    hsla(214, 22%, 84%, 0) 50%
+  );
+
+  --jet: hsl(214, 20%, 82%);
+  --onyx: hsl(210, 35%, 95%);
+  --eerie-black-1: hsl(0, 0%, 100%);
+  --eerie-black-2: hsl(210, 33%, 98%);
+  --smoky-black: hsl(210, 40%, 96%);
+  --white-1: hsl(222, 18%, 26%);
+  --white-2: hsl(222, 32%, 16%);
+  --light-gray: hsl(220, 14%, 36%);
+  --light-gray-70: hsla(220, 14%, 36%, 0.72);
+  --page-background: hsl(210, 40%, 96%);
+  --navbar-background: hsla(0, 0%, 100%, 0.88);
+  --plain-link-color: hsl(215, 72%, 42%);
+  --plain-link-hover-color: hsl(222, 32%, 16%);
+  --accent-contrast: hsl(222, 32%, 16%);
+  --theme-toggle-background: hsl(0, 0%, 100%);
+  --theme-toggle-border: hsl(214, 20%, 82%);
+  --theme-toggle-color: hsl(222, 32%, 16%);
+  --theme-toggle-hover-background: hsl(222, 32%, 16%);
+  --theme-toggle-hover-color: hsl(0, 0%, 100%);
+  --scrollbar-thumb: hsla(220, 18%, 42%, 0.25);
+  --scrollbar-thumb-hover: hsla(220, 18%, 42%, 0.38);
+  --scrollbar-thumb-border: hsl(210, 40%, 96%);
+  --scrollbar-thumb-shadow-1: hsla(0, 0%, 100%, 0.65);
+  --scrollbar-thumb-shadow-2: hsla(220, 18%, 40%, 0.12);
+  --map-filter: grayscale(1);
+  --shadow-1: -4px 8px 24px hsla(220, 30%, 24%, 0.08);
+  --shadow-2: 0 16px 30px hsla(220, 30%, 24%, 0.1);
+  --shadow-3: 0 16px 40px hsla(220, 30%, 24%, 0.1);
+  --shadow-4: 0 25px 50px hsla(220, 30%, 24%, 0.08);
+  --shadow-5: 0 24px 80px hsla(220, 30%, 24%, 0.14);
+}
+
 
 
 
@@ -148,14 +221,17 @@ input, textarea {
 
 ::selection {
   background: var(--orange-yellow-crayola);
-  color: var(--smoky-black);
+  color: var(--accent-contrast);
 }
 
 :focus { outline-color: var(--orange-yellow-crayola); }
 
 html { font-family: var(--ff-poppins); }
 
-body { background: var(--smoky-black); }
+body {
+  background: var(--page-background);
+  color: var(--light-gray);
+}
 
 
 
@@ -461,7 +537,7 @@ main {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: hsla(240, 1%, 17%, 0.75);
+  background: var(--navbar-background);
   backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
   border-radius: 12px 12px 0 0;
@@ -491,7 +567,36 @@ main {
 
 .plain-link{
   display: inline;
-  color:aqua
+  color: var(--plain-link-color);
+}
+
+.plain-link:hover,
+.plain-link:focus {
+  color: var(--plain-link-hover-color);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--theme-toggle-color);
+  background: var(--theme-toggle-background);
+  border: 1px solid var(--theme-toggle-border);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: var(--fs-8);
+  line-height: 1;
+  transition: var(--transition-1);
+}
+
+.theme-toggle ion-icon {
+  font-size: 15px;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+  color: var(--theme-toggle-hover-color);
+  background: var(--theme-toggle-hover-background);
 }
 
 
@@ -1246,7 +1351,7 @@ main {
 
 .publication-link:hover {
   background: var(--orange-yellow-crayola);
-  color: var(--smoky-black);
+  color: var(--accent-contrast);
 }
 
 .publication-empty-state {
@@ -1278,7 +1383,7 @@ main {
   width: 100%;
   height: 100%;
   border: none;
-  filter: grayscale(1) invert(1);
+  filter: var(--map-filter);
 }
 
 .contact-form { margin-bottom: 10px; }
@@ -1923,14 +2028,14 @@ textarea.form-input::-webkit-resizer { display: none; }
   body::-webkit-scrollbar-track { background: var(--smoky-black); }
 
   body::-webkit-scrollbar-thumb {
-    border: 5px solid var(--smoky-black);
-    background: hsla(0, 0%, 100%, 0.1);
+    border: 5px solid var(--scrollbar-thumb-border);
+    background: var(--scrollbar-thumb);
     border-radius: 20px;
-    box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
-                inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
+    box-shadow: inset 1px 1px 0 var(--scrollbar-thumb-shadow-1),
+                inset -1px -1px 0 var(--scrollbar-thumb-shadow-2);
   }
 
-  body::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.15); }
+  body::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
 
   body::-webkit-scrollbar-button { height: 60px; }
 

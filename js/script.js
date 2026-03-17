@@ -2,6 +2,75 @@
 
 
 
+const THEME_STORAGE_KEY = "theme-preference";
+const themeToggle = document.querySelector("[data-theme-toggle]");
+const themeToggleLabel = document.querySelector("[data-theme-toggle-label]");
+const themeToggleIcon = document.querySelector("[data-theme-toggle-icon]");
+const hasThemeToggle = themeToggle && themeToggleLabel && themeToggleIcon;
+const systemThemeQuery = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+const getStoredTheme = function () {
+  try {
+    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    return storedTheme === "light" || storedTheme === "dark" ? storedTheme : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+const getSystemTheme = function () {
+  return systemThemeQuery && systemThemeQuery.matches ? "dark" : "light";
+}
+
+const applyTheme = function (theme) {
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = theme;
+
+  if (!hasThemeToggle) return;
+
+  const nextTheme = theme === "dark" ? "light" : "dark";
+
+  themeToggleLabel.textContent = nextTheme === "dark" ? "Dark" : "Light";
+  themeToggleIcon.setAttribute("name", nextTheme === "dark" ? "moon-outline" : "sunny-outline");
+  themeToggle.setAttribute("aria-label", `Switch to ${nextTheme} theme`);
+  themeToggle.setAttribute("title", `Switch to ${nextTheme} theme`);
+}
+
+const initializeTheme = function () {
+  const initialTheme = document.documentElement.dataset.theme || getStoredTheme() || getSystemTheme();
+  applyTheme(initialTheme);
+}
+
+initializeTheme();
+
+if (hasThemeToggle) {
+  themeToggle.addEventListener("click", function () {
+    const currentTheme = document.documentElement.dataset.theme || getSystemTheme();
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    } catch (error) {
+      // Ignore storage failures and still update the active theme for this session.
+    }
+
+    applyTheme(nextTheme);
+  });
+}
+
+if (systemThemeQuery) {
+  const handleSystemThemeChange = function (event) {
+    if (getStoredTheme()) return;
+    applyTheme(event.matches ? "dark" : "light");
+  }
+
+  if (typeof systemThemeQuery.addEventListener === "function") {
+    systemThemeQuery.addEventListener("change", handleSystemThemeChange);
+  } else if (typeof systemThemeQuery.addListener === "function") {
+    systemThemeQuery.addListener(handleSystemThemeChange);
+  }
+}
+
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
